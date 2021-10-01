@@ -66,16 +66,31 @@ if(standard === 0) {
 
 for (i=0; i<3; i++) {
   if(voter[i] == false) {
-    msg = `Votador detectou um erro`;
+    msg = `Voter found an error`;
   } 
 }
 
 if(msg === `` ){
-  msg = `Votador terminou as verificacoes sem erro`;
+  msg = `Voter not found an error`;
 }
  
 console.table(arrayResults)
-console.log(msg);
-console.log(`Media calculada foi ${mean}`)
-console.log(`Alcalnce calculado foi ${range}`)
-console.log(`Desvio padrão calculado foi ${standard}`)
+
+let infoDiv = document.getElementById('info');
+let number = document.getElementById('number');
+let occurances = document.getElementById('occurances');
+let meanDiv = document.getElementById('mean');
+let rangeDiv = document.getElementById('range');
+let sdDiv = document.getElementById('sd');
+let msgDiv = document.getElementById('msg');
+
+number.innerHTML = number.textContent + VALUE_CALC;
+occurances.innerHTML = occurances.textContent + NUMBER_OF_RUNS;
+
+meanDiv.innerHTML = meanDiv.textContent + mean;
+rangeDiv.innerHTML = rangeDiv.textContent + range;
+sdDiv.innerHTML = sdDiv.textContent + standard;
+
+msgDiv.innerHTML = msg;
+
+// infoDiv.style.visibility='hidden';
