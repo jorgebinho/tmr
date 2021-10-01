@@ -32,7 +32,7 @@ function standardDeviation(array) {
 }
 
 var VALUE_CALC = genRandom(1,10);
-const NUMBER_OF_RUNS = 4;
+const NUMBER_OF_RUNS = 3;
 var voter = Array();
 
 var arrayResults = Array();
