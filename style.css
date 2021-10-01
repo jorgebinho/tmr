@@ -6,12 +6,8 @@
   
   :root {
     --white: #FFFFFF;
-  
-    --gray-100: #0099ff;
-  
-    --bg-p: #1997b9;
-    --yellow-500: #eba417;
-  }
+    --bg-p: #0e303a;
+   }
   
   @media (max-width: 1080px) {
     html {
@@ -30,23 +26,27 @@
     color: var(--white);
   }
   
-  body, input, textarea, select, button {
-    font: 400 1rem "Roboto", sans-serif;
-  }
-  
-  button {
-    cursor: pointer;
-  }
-  
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  h1{
+  body {
+    font: 400 1rem "ROboto", sans-serif;
     text-align: center;
   }
 
-  h3{
-    text-align: center;
+  p{
+    font-size: 20px;
+  }
+
+  #container {
+    padding: 20px;
+  }
+
+  #titles {
+    padding-bottom: 40px;
+  }
+
+  #info {
+    padding: 40px;
+  }
+
+  #results {
+    padding: 20px;
   }
