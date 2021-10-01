@@ -5,9 +5,10 @@ function genRandom(min, max) {
 function modules (value) {
     var possibleError = genRandom(1,4);
     if (possibleError == 4) {
-        value = value + 1 
+        value = value + 0.5; 
     }
-    arrayResults.push(value);
+    let DOUBLE_VALUE = value + value;
+    arrayResults.push(DOUBLE_VALUE);
 }
 
 function mean (array) {
@@ -25,49 +26,56 @@ function range(array) {
     return range
 }
 
-function median (array) {
-    const arraySorted = array.sort((a, b ) => a - b);
-    console.table(array);
-    return arraySorted.length % 2 === 0 ? (arraySorted[arraySorted.length/2 - 1] + arraySorted[arraySorted.length/2]) / 2 : arraySorted[Math.floor(arraySorted.length/2)];
+function standardDeviation(array) {
+  var standard = math.std(array);
+  return standard;
 }
 
-function mode(array) {
-    const obj = {};
-    array.forEach(number => {
-      if (!obj[number]) {
-        obj[number] = 1;
-      } else {
-        obj[number] += 1;
-      }
-    });
-    
-    let highestValue = 0;
-    let highestValueKey = -Infinity;
-  
-    for (let key in obj) {
-      const value = obj[key];
-      if (value > highestValue) {
-        highestValue = value;
-        highestValueKey = key;
-      }
-    }
-
-    return Number(highestValueKey);
-  }
-
 var VALUE_CALC = genRandom(1,10);
-const DOUBLE_VALUE = VALUE_CALC + VALUE_CALC;
-const NUMBER_OF_RUNS = genRandom(1,5);
+const NUMBER_OF_RUNS = 4;
+var voter = Array();
 
 var arrayResults = Array();
 
 for (i=0; i<NUMBER_OF_RUNS; i++){
-    modules(VALUE_CALC, DOUBLE_VALUE);
+    modules(VALUE_CALC);
 }
 
+var msg = ``;
+var mean = mean(arrayResults);
+var range = range(arrayResults);
+var standard = standardDeviation(arrayResults);
 
-// var mode = mode(arrayResults)
-// var range = range(arrayResults)
-// var median = median(arrayResults);
-// var meanValue = mean(arrayResults, NUMBER_OF_RUNS);
-// alert(mode);
+if(Number.isInteger(mean)) {
+  voter.push(true);
+} else {
+  voter.push(false);
+}
+
+if(range === 0) {
+  voter.push(true);
+} else {
+  voter.push(false);
+}
+
+if(standard === 0) {
+  voter.push(true);
+} else {
+  voter.push(false);
+}
+
+for (i=0; i<3; i++) {
+  if(voter[i] == false) {
+    msg = `Votador detectou um erro`;
+  } 
+}
+
+if(msg === `` ){
+  msg = `Votador terminou as verificacoes sem erro`;
+}
+ 
+console.table(arrayResults)
+console.log(msg);
+console.log(`Media calculada foi ${mean}`)
+console.log(`Alcalnce calculado foi ${range}`)
+console.log(`Desvio padrão calculado foi ${standard}`)
